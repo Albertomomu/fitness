@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pages/Home.dart';
+import '../pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins'
       ),
-      home: const HomePage()
+      home: HomePage()
     );
   }
 }
