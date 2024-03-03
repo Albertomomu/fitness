@@ -10,8 +10,24 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       backgroundColor: Colors.white,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _searchField(),
+          SizedBox(height: 40),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text('Categories',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              )
+            ],
+          ),
         ]
       )
     );
