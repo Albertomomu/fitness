@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitness/models/category_model.dart';
 import 'package:fitness/models/diet_model.dart';
+import 'package:fitness/models/popular_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   List<CategoryModel> categories = [];
   List<DietModel> diets = [];
+  List<PopularDietsModel> popularDiets = [];
 
   void _getCategories() {
     categories = CategoryModel.getCategories();
@@ -17,10 +19,15 @@ class HomePage extends StatelessWidget {
     diets = DietModel.getDiets();
   }
 
+  void _getPopularDiets() {
+    popularDiets = PopularDietsModel.getPopularDiets();
+  }
+
   @override
   Widget build(BuildContext context) {
     _getCategories();
     _getDiets();
+    _getPopularDiets();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -31,9 +38,36 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 40),
           _categoriesSection(),
           SizedBox(height: 40),
-          _recommedationDietSection()
+          _recommedationDietSection(),
+          SizedBox(height: 40),
+          _popularDietsSection()
         ]
       )
+    );
+  }
+
+  Row _popularDietsSection() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Text('Popular',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
+        SizedBox(height: 15),
+        Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.black
+          )
+        )
+      ]
     );
   }
 
